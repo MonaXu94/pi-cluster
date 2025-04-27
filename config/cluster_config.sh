@@ -6,3 +6,7 @@ WORKER_NODES=("192.168.1.104")
 
 # SSH User Configuration
 SSH_USER="david"
+
+# Load Balancer Configuration
+LOAD_BALANCER_IP="192.168.1.229"
+LOAD_BALANCER_PORT="6443"
