@@ -1,7 +1,11 @@
-output "master_ip" {
-  value = var.master_ip
+output "grafana_url" {
+  value = "grafana.local"
 }
 
-output "worker_ips" {
-  value = var.pi_ips
+output "kibana_url" {
+  value = "kibana.local"
+}
+
+output "prometheus_url" {
+  value = "prometheus.local"
 }

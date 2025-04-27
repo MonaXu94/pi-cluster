@@ -1,18 +1,24 @@
-provider "kubernetes"{
-    host = "https://${var.master_ip}:6443"
-    cluster_ca_certificate = file("/etc/rancher/k3s/k3s.ctr")
-    token = file("/etc/rancher/k3s/k3s.token")
+module "k3s_cluster" {
+  source = "./modules/k8s-cluster"
+
+  master_ips = [
+    "192.168.1.101", "192.168.1.102", "192.168.1.103", "192.168.1.104"
+  ]
+  cluster_name = "k3s-cluster"
 }
 
-provider "helm" {
-    kubernetes {
-        host = "https://${var.master_ip}:6443"
-        cluster_ca_certificate = file("/etc/rancher/k3s/k3s.ctr")
-        token = file("/etc/rancher/k3s/k3s.token")
-    }
+module "monitoring" {
+  source = "./modules/monitoring"
 }
 
-module "k3s"{
-    source = "./terraform/k3s-cluster.tf"
-    pi_ips = var.pi_ips
+module "logging" {
+  source = "./modules/logging"
+}
+
+module "big_data" {
+  source = "./modules/big-data"
+}
+
+module "ingress" {
+  source = "./modules/ingress"
 }
