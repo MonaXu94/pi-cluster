@@ -1,10 +1,9 @@
-variable "master_ip" {
-  type = string
-  default = "192.168.1.101" # the ip of your master node
+variable "master_ips" {
+  description = "IP addresses of the Raspberry Pi master nodes"
+  type        = list(string)
 }
 
-variable "pi_ips" {
-  type = list(string)
-  default = ["192.168.1.101", "192.168.1.102", "192.168.1.103", "192.168.1.104"]
+variable "cluster_name" {
+  description = "Name of the k3s cluster"
+  type        = string
 }
-
